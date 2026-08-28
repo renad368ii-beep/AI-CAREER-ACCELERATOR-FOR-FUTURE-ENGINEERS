@@ -1,0 +1,115 @@
+<template>
+    <lightning-card title={cardTitle} icon-name="standard:service_appointment">
+        <div slot="actions">
+            <lightning-button-icon
+                icon-name="utility:refresh"
+                alternative-text="Refresh"
+                title="Refresh"
+                onclick={handleRefresh}
+            ></lightning-button-icon>
+        </div>
+
+        <div class="cal-toolbar slds-p-horizontal_medium slds-p-bottom_small">
+            <lightning-button-group>
+                <lightning-button label="Today" onclick={handleToday}></lightning-button>
+                <lightning-button-icon
+                    icon-name="utility:chevronleft"
+                    alternative-text="Previous week"
+                    title="Previous week"
+                    onclick={handlePrevWeek}
+                ></lightning-button-icon>
+                <lightning-button-icon
+                    icon-name="utility:chevronright"
+                    alternative-text="Next week"
+                    title="Next week"
+                    onclick={handleNextWeek}
+                ></lightning-button-icon>
+            </lightning-button-group>
+            <span class="slds-text-heading_small slds-p-left_small cal-range-label">{weekRangeLabel}</span>
+        </div>
+
+        <template if:true={isLoading}>
+            <div class="slds-p-around_medium slds-align_absolute-center">
+                <lightning-spinner alternative-text="Loading appointments" size="small"></lightning-spinner>
+            </div>
+        </template>
+
+        <template if:true={error}>
+            <div class="slds-p-around_medium slds-text-color_error">
+                {error}
+            </div>
+        </template>
+
+        <template if:false={isLoading}>
+            <template if:true={hasNoAppointments}>
+                <div class="slds-p-around_medium slds-text-body_regular slds-text-color_weak">
+                    No appointments scheduled for this week.
+                </div>
+            </template>
+
+            <div class="cal-grid slds-p-horizontal_medium slds-p-bottom_medium">
+                <template for:each={days} for:item="day">
+                    <div key={day.key} class="cal-day" class:cal-day-today={day.isToday}>
+                        <div class="cal-day-header">
+                            <span class="cal-day-name">{day.dateLabel}</span>
+                            <span class="cal-day-num">{day.dateNum}</span>
+                        </div>
+                        <div class="cal-day-body">
+                            <template for:each={day.appointments} for:item="appt">
+                                <div
+                                    key={appt.Id}
+                                    class={appt.statusClass}
+                                    data-id={appt.Id}
+                                    onclick={handleAppointmentClick}
+                                    role="button"
+                                    tabindex="0"
+                                >
+                                    <p class="slot-subject">{appt.displayName}</p>
+                                    <p class="slot-time">{appt.timeLabel}</p>
+                                    <p class="slot-status">{appt.Status__c}</p>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </lightning-card>
+
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button
+                        class="slds-button slds-button_icon slds-modal__close"
+                        title="Close"
+                        onclick={closeModal}
+                    >
+                        <lightning-icon icon-name="utility:close" size="small" alternative-text="Close"></lightning-icon>
+                    </button>
+                    <h2 class="slds-text-heading_medium">Appointment Details</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <template if:true={selectedAppointment}>
+                        <p><strong>Appointment:</strong> {selectedAppointment.Name}</p>
+                        <p><strong>Time:</strong> {selectedAppointment.timeLabel}</p>
+                        <p><strong>Status:</strong> {selectedAppointment.Status__c}</p>
+                        <p><strong>Service Type:</strong> {selectedAppointment.serviceTypeName}</p>
+                        <p><strong>Service Resource:</strong> {selectedAppointment.serviceResourceName}</p>
+                        <p><strong>Notes:</strong> {selectedAppointment.Notes__c}</p>
+                    </template>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button label="Close" onclick={closeModal}></lightning-button>
+                    <lightning-button
+                        variant="brand"
+                        label="Open Record"
+                        onclick={openRecord}
+                        class="slds-m-left_x-small"
+                    ></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

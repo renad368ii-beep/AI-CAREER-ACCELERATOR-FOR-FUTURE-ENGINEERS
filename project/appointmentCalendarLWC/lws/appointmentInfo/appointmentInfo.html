@@ -1,0 +1,24 @@
+<template>
+    <template if:true={hasAppointment}>
+        <lightning-card title="Appointment Details" icon-name="standard:event">
+            <div class="slds-p-around_medium">
+                <p><strong>Name:</strong> {name}</p>
+                <p><strong>Date:</strong> {date}</p>
+                <p><strong>Time:</strong> {timeLabel}</p>
+                <p><strong>Status:</strong> {status}</p>
+                <p><strong>Service Type:</strong> {serviceTypeName}</p>
+                <p><strong>Service Resource:</strong> {serviceResourceName}</p>
+                <p><strong>Notes:</strong> {notes}</p>
+            </div>
+        </lightning-card>
+    </template>
+
+    <template if:false={hasAppointment}>
+        <lightning-card title="Appointment Details" icon-name="standard:event">
+            <div class="slds-p-around_medium">
+                <p>No appointment selected.</p>
+            </div>
+        </lightning-card>
+    </template>
+</template>
+
