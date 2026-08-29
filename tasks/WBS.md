@@ -11,7 +11,7 @@ Teams will define the scope, gather detailed requirements, and begin designing t
 
 #### Tasks
 - [x] **Form Teams and Elect Roles** (done) — medium priority
-- [ ] **Conduct Requirements Gathering** (todo) — medium priority
+- [x] **Conduct Requirements Gathering** (done) — medium priority
 - [x] **Initial Data Model Design** (done) — medium priority
 
 ### Salesforce Data Model & Security Setup
@@ -23,7 +23,7 @@ Focus on implementing the Salesforce data model, setting up security, and config
 
 #### Tasks
 - [x] **Implement Custom Objects and Fields** (done) — medium priority
-- [ ] **Configure Security and Access** (todo) — medium priority
+- [x] **Configure Security and Access** (done) — medium priority
 - [x] **Design Basic Lightning Pages** (done) — medium priority
 
 ### Flow Builder for Core Logic
@@ -35,7 +35,7 @@ Develop core business logic for appointment management using Salesforce Flow, fo
 
 #### Tasks
 - [x] **Develop Appointment Creation Flow (Screen Flow)** (done) — medium priority
-- [ ] **Implement Appointment Update/Cancellation Flow (Record-Triggered/Autolaunched)** (todo) — medium priority
+- [x] **Implement Appointment Update/Cancellation Flow (Record-Triggered/Autolaunched)** (done) — medium priority
 
 ### Agentforce Agent Creation & Basic Topics
 - **Status:** todo
@@ -46,7 +46,7 @@ Begin building the conversational AI agent using Agentforce, defining core topic
 
 #### Tasks
 - [x] **Configure Agentforce Agent** (done) — medium priority
-- [ ] **Define Core Topics: Scheduling** (todo) — medium priority
+- [x] **Define Core Topics: Scheduling** (done) — medium priority
 - [x] **Define Core Topics: Rescheduling/Cancellation** (done) — medium priority
 
 ### Agentforce Actions & Flow Integration
@@ -70,7 +70,7 @@ Develop the Lightning Experience application for administrators/agents and enhan
 
 #### Tasks
 - [x] **Build Lightning App and Home Pages** (done) — medium priority
-- [ ] **Develop Custom Lightning Web Components (LWC)** (todo) — medium priority
+- [x] **Develop Custom Lightning Web Components (LWC)** (done) — medium priority
 - [x] **Implement Dynamic Visibility and Actions** (done) — medium priority
 
 ### Testing, Debugging & Reports
@@ -81,7 +81,7 @@ Develop the Lightning Experience application for administrators/agents and enhan
 Thoroughly test the entire solution, debug any issues, and create relevant reports and dashboards.
 
 #### Tasks
-- [ ] **Conduct Agent Testing and Debugging** (todo) — medium priority
+- [x] **Conduct Agent Testing and Debugging** (done) — medium priority
 - [x] **Perform End-to-End System Testing** (done) — medium priority
 - [x] **Develop Reports and Dashboards** (done) — medium priority
 
